@@ -23,7 +23,7 @@ app.get("/api/:date?", function (req, res) {
   let unix = ''
 
   if (date) {
-    unix = date.match(/\d+/) === null ? new Date(date).getTime() : Number(date);
+    unix = date.match(/^\d+$/) === null ? new Date(date).getTime() : Number(date);
     if (isNaN(unix)) res.json({ error: 'Invalid Date' });
   }
   else unix = Date.now();
